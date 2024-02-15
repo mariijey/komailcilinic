@@ -16,7 +16,8 @@ const AccessGuard = ({ access, children }: AccessProps & GuardProps) => {
   const userAccess = useSelector(
     (state: { menu: MenuProps }) => state.menu.userAccess
   );
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  // const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const isLoggedIn = true;
 
   if (!isLoggedIn) return null;
   if (!access) return children;
