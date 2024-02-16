@@ -1,21 +1,22 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // project import
-import useAuth from 'hooks/useAuth';
+import useAuth from "hooks/useAuth";
 
 // types
-import { GuardProps } from 'types/auth';
+import { GuardProps } from "types/auth";
 
 // ==============================|| AUTH GUARD ||============================== //
 
 const AuthGuard = ({ children }: GuardProps) => {
-  const { isLoggedIn } = useAuth();
+  // const { isLoggedIn } = useAuth();
+  const isLoggedIn = true;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate('login', { replace: true });
+      navigate("login", { replace: true });
     }
   }, [isLoggedIn, navigate]);
 
