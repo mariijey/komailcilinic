@@ -30,10 +30,10 @@ const Header = ({ open, handleDrawerToggle }: Props) => {
   const iconBackColor =
     theme.palette.mode === "dark" ? "background.default" : "grey.100";
 
-  useEffect(() => {
-    getMe();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getMe?.();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   // common header
   const mainHeader: ReactNode = (

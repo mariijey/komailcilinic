@@ -27,9 +27,9 @@ const axiosBaseQuery =
         "token"
       )}`;
       const res = await axiosInstance(args);
-      const data = res.data;
-      const method = res.config.method as methodType;
-      const status = res.status;
+      const data = res?.data;
+      const method = res?.config.method as methodType;
+      const status = res?.status;
 
       if (method !== "get" && status >= 200 && status < 300)
         api.dispatch(
@@ -67,13 +67,15 @@ const axiosBaseQuery =
             },
           })
         );
-      } else if (!isLoginReq && status === 401) {
-        delete axiosInstance.defaults.headers.common.Authorization;
-        localStorage.removeItem("token");
-        localStorage.removeItem("isLoggedIn");
-        window.location.replace("/login");
-        return axiosBaseQuery()(args, api, extraOptions);
-      } else {
+      }
+      // else if (!isLoginReq && status === 401) {
+      //   delete axiosInstance.defaults.headers.common.Authorization;
+      //   localStorage.removeItem("token");
+      //   localStorage.removeItem("isLoggedIn");
+      //   window.location.replace("/login");
+      //   return axiosBaseQuery()(args, api, extraOptions);
+      // }
+      else {
         api.dispatch(
           openSnackbar({
             open: true,

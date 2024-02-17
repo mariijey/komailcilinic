@@ -1,6 +1,7 @@
 import { FocusEvent, forwardRef, SyntheticEvent, useState } from "react";
 import {
   Box,
+  ClickAwayListener,
   FormHelperText,
   IconButton,
   InputAdornment,
@@ -13,7 +14,6 @@ import PasswordStrengthBar from "react-password-strength-bar";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from "config";
