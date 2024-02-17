@@ -124,19 +124,11 @@ const dashboard: NavItemType = {
     },
 
     {
-      id: "Special-services",
-      type: "item",
-      title: " نوبت های رزرو شده ",
-      icon: icons.DashboardIcon,
-      url: "/KomailClinic/Admin/show_users.php",
-      breadcrumbs: true,
-    },
-    {
       id: "visits",
       type: "collapse",
       title: "نوبت های رزرو شده",
       icon: icons.NewspaperIcon,
-      access: { roles: [13] },
+      // access: { roles: [13] },
       children: [
         {
           id: "visits-normal",
