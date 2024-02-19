@@ -41,7 +41,7 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     loginPost(data)
       .unwrap()
       .then((res: any) => {
-        setSession(res.data.accessToken);
+        // setSession(res.data.accessToken);
         navigate("/dashboard");
         return res;
       });

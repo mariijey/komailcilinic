@@ -10,9 +10,13 @@ type methodType = "get" | "post" | "put" | "patch" | "delete";
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
-  validateStatus: function (status: any) {
-    return status >= 200 && status < 300;
+  headers: {
+    Accept: "*/*",
+    "Content-Type": "text/plain;charset=UTF-8",
   },
+  // validateStatus: function (status: any) {
+  //   return status >= 200 && status < 300;
+  // },
 });
 
 const axiosBaseQuery =
@@ -23,13 +27,12 @@ const axiosBaseQuery =
   > =>
   async (args: AxiosRequestConfig, api: any, extraOptions: any) => {
     try {
-      axiosInstance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem(
-        "token"
-      )}`;
       const res = await axiosInstance(args);
       const data = res?.data;
       const method = res?.config.method as methodType;
       const status = res?.status;
+
+      console.log(res);
 
       if (method !== "get" && status >= 200 && status < 300)
         api.dispatch(
@@ -54,7 +57,6 @@ const axiosBaseQuery =
     } catch (error: any) {
       const response = error.response;
       const status = response.status;
-      const isLoginReq = response.config.url.includes("sign-in");
 
       if (status === 500 || status > 500) {
         api.dispatch(
